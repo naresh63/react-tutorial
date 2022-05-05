@@ -1,0 +1,88 @@
+import {Routes,Route,Outlet ,Navigate} from 'react-router-dom';
+
+//protected route component
+let user = localStorage.getItem('user');
+const ProtectedRoute = ({ user,
+   redirectPath = '/login',
+   children
+   }) => {
+  if (!user) {
+    return <Navigate to={redirectPath} replace />;
+  }
+  return children ? children : <Outlet />;
+};
+
+function App() {
+
+  return (
+    <div className="App">
+
+      <Routes>
+      <Route path="/" element={<Home/>} />
+      <Route path="/home" element={<Home/>} />
+      <Route path="/about" element={<Aboutpage/>} />
+      <Route path="/event" element={<Eventpage/>} />
+      <Route path="/news" element={<Newspage/>} />
+       {/* private route */}
+       <Route path="/businesses" element={
+       <ProtectedRoute user={user}>
+          <Businessespage/>
+       </ProtectedRoute>   
+       }/>
+
+       <Route path="/profile" element={
+        <ProtectedRoute user={user}>
+          <ProfilePage/>
+        </ProtectedRoute> 
+       }>
+         <Route index element={<UserProfilepage />} />
+         <Route path="userprofilepage" element={<UserProfilepage/>}/>
+         <Route path="userfamilypage" element={<UserFamilypage/>}/>
+         <Route path="usermatrimonialpage" element={<UserMatrimonial/>}/>
+         <Route path="userbusinesspage" element={<UserBusiness/>}/>
+         <Route path="userjobpage" element={<UserJob/>}/>
+         <Route path="*" element={<h1>No MATCH </h1>} />
+       </Route>
+
+       <Route path="/viewallbusi" element={
+       <ProtectedRoute user={user}>
+          <ViewallBusi/>
+       </ProtectedRoute>
+       } />
+
+       <Route path="/matrimonial" element={
+        <ProtectedRoute user={user}>
+          <Matrimonialpage/>
+        </ProtectedRoute> 
+       }/>
+
+       <Route path="/jobs" element={ 
+        <ProtectedRoute user={user}>
+          <Jobspage/>
+        </ProtectedRoute> 
+       } />
+
+       <Route path="/addjob" element={
+        <ProtectedRoute user={user}>
+          <AddJob/>
+        </ProtectedRoute> 
+       } />
+
+       <Route path="/newsdetail" element={<Newsdetailpage/>} />
+
+       <Route path="/login" element={<Loginpage/>} />
+       <Route path="/forgotpass" element={<ForgotpassPage/>} />
+       <Route path="/signup" element={<Signuppage/>} />
+
+ 
+      <Route path="/contact" element={<Contactpage/>} />
+      <Route path="*" element={<h1>not found</h1>}/> 
+
+      </Routes>
+     
+
+    </div>
+  );
+}
+
+export default App;
