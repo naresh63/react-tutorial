@@ -31,7 +31,9 @@ const App = () => {
         <div className="box box--3"></div>
         <div className="box box--4"></div>
         <div className="box box--5"></div>
-      </div>
+      </div
+      for more details:
+      https://www.kindacode.com/article/how-to-create-a-scroll-to-top-button-in-react/  
 
       {showButton && (
         <button onClick={scrollToTop} className="back-to-top">
