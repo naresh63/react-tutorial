@@ -86,3 +86,6 @@ function App() {
 }
 
 export default App;
+ more details:
+ https://www.robinwieruch.de/react-router-private-routes/
+
