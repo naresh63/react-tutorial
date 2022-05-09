@@ -1,0 +1,57 @@
+// nested routes inside profile route
+<Route
+          path="/profile"
+          element={
+            <ProtectedRoute user={user}>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<UserProfilepage />} />
+          <Route path="userprofilepage" element={<UserProfilepage />} />
+          <Route path="userfamilypage" element={<UserFamilypage />} />
+          <Route path="usermatrimonialpage" element={<UserMatrimonial />} />
+          <Route path="userbusinesspage" element={<UserBusiness />} />
+          <Route path="userjobpage" element={<UserJob />} />
+          <Route path="*" element={<h1>No MATCH </h1>} />
+          
+</Route>
+ // at profile page , nested navbar is created
+ 
+./Profilepage.js 
+ import { Routes, Route, Link,  Outlet, NavLink } from "react-router-dom";
+
+ 
+ <Row className="userprofile-nav">
+            <nav className="ms-3 mynestednav">
+
+              <ul className="nav">
+
+                <li className="nav-item">
+                  <NavLink to="userprofilepage" className="nav-link"> Profile </NavLink>
+                </li>
+
+                <li className="nav-item">
+                  <NavLink to="userfamilypage" className="nav-link"> family page </NavLink>
+                </li>
+
+
+                <li className="nav-item">
+                  <NavLink to="usermatrimonialpage" className="nav-link"> Matrimonial </NavLink>
+                </li>
+
+                <li className="nav-item">
+                  <NavLink to="userbusinesspage" className="nav-link"> Business </NavLink>
+                </li>
+
+                <li className="nav-item">
+                  <NavLink to="userjobpage" className="nav-link"> Job </NavLink>
+                </li>
+
+              </ul>
+            </nav>
+
+            <Outlet />
+          </Row>
+          
+          
