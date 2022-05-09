@@ -54,4 +54,10 @@
             <Outlet />
           </Row>
           
+          NavLink provide .active class default 
           
+  .userprofile-nav .active {
+  color:#fff;
+  background-color:#007BFF;
+  border-radius:5px; 
+}
