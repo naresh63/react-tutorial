@@ -1,0 +1,79 @@
+// radio button in react eg. gender
+let [genradio, setGenradio] = useState("male");
+<Row> 
+                <Col lg={2}> <label>Looking for </label> </Col>
+                
+                <Col lg={4} md={12} sm={12}> 
+                <input
+                  type="radio"
+                  checked={genradio === "male"}
+                  value="male"
+                  onChange={(e) => setGenradio(e.target.value)}
+                />
+
+                <label className="mx-2"> Male</label>
+
+                <input
+                  type="radio"
+                  checked={genradio === "female"}
+                  value="female"
+                  onChange={(e) => setGenradio(e.target.value)}
+                />
+
+                <label className="mx-2">Female</label>
+                
+                </Col>
+</Row>
+
+// select age dropdown
+  let [age1, setAge1] = useState("18");
+    <Col lg={4} md={12} sm={12}>
+                    <select className="form-select"
+                     value={age1}
+                     onChange={(e) => setAge1(e.target.value)} 
+                    >
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                  <option value="32">32</option>
+                  <option value="33">33</option>
+                  <option value="34">34</option>
+                  <option value="35">35</option>
+                  <option value="36">36</option>
+                  <option value="37">37</option>
+                  <option value="38">38</option>
+                  <option value="39">39</option>
+                 </select>
+  </Col>
+  
+  // checkbox
+  // checkbox for remember
+    let[checkremember,setCheckremember]=useState(false);
+  
+  <Col> <input type="checkbox" checked={checkremember} onChange={(e)=>setCheckremember(e.target.value)}/> Remember me </Col>
+  
+  // username input type="text"
+      let[loginid,setLoginid]=useState("");
+  <input type="text" className="w-100 form-control" value={loginid} onChange={(e)=>setLoginid(e.target.value)}  required/>
+  
+  // files 
+    let[adharfrontfile,setAdharfrontfile]=useState(null); sometime null create problem so replace it with empty string
+
+       {/* adhar frontend file */}
+            <Col  lg={3} md={6} sm={12}>
+              <label>Aadhar Frontside
+              </label>
+              
+              <input type="file" className="form-control" name="adharfront" value={adharfrontfile} onChange={(e)=>setAdharfrontfile(e.target.files[0])} />
+            </Col>
