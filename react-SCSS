@@ -1,0 +1,35 @@
+
+// sass with react
+npm i sass 
+to avoid legacy error
+npm i sass --legacy-peer-deps
+ 
+replace app.css file with app.scss and import it in app.js (no need of app.css file)
+
+
+mixin with eg. @mixin -@include pair
+@mixin flex-center{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-img-cont-footer {
+    width: 180px;
+    min-height: 50px;
+    background-color: #281919;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    @include flex-center;
+  }
+ variable in scss
+/*---- scss variable --------*/
+$greenshade: #a2a824;
+$blueshade : #2f3753;
+
+    ul {
+      .register-link {
+        color: $greenshade;
+        font-weight: bold;
+      }
+
