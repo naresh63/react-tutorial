@@ -1,0 +1,6 @@
+allow place inside src , like open src create folder images and place all images there.
+
+//images
+import headerLogo from '../../imgs/header-logo.png'; 
+
+<img src={headerLogo} alt="website-logo" />
