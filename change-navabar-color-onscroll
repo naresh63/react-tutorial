@@ -1,0 +1,33 @@
+ // change color on scroll
+   let[color,setColor]=useState(false);
+   // 60 is px , take as your requirement on scroll
+   const changeColor=()=>{
+     if(window.scrollY>=60){
+            setColor(true)
+     }else{
+      setColor(false) 
+     }
+   }
+    window.addEventListener('scroll',changeColor)   
+    
+             <nav className={color ?  "nav-bg": " " }>
+              <span> <Link to="/"> <img src="../images/logo-s.webp" />   </Link> </span>
+              <ul className=" main-nav">
+                <li>
+                  <NavLink to="/services"> SERVICES </NavLink>
+                </li>
+
+                <li>
+                  <NavLink to="/industries"> INDUSTRIES </NavLink>
+                </li>
+
+                <li>
+                  <NavLink to="/hireresources"> HIRE RESOURCES </NavLink>
+                </li>
+                </ul>
+            </nav>    
+            
+            app.css
+            .nav-bg{
+                 background-color: grey;
+            }
