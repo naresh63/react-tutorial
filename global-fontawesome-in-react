@@ -1,0 +1,24 @@
+inside src 
+create file fontawesome.js
+fontawesome.js
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far} from "@fortawesome/free-regular-svg-icons";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+
+library.add(fas, fab,far);
+ 
+ now go to index.js, import fontawesome
+ index.js
+ //fontawesome
+import './fontawesome'
+
+
+at component 
+Header.js
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// solid icon
+<FontAwesomeIcon icon="home"  style={{ color: 'white' }} size="2x"  />
+
+// regular icon
+<FontAwesomeIcon icon={['far', 'comments']} style={{ color: 'white' }} size="2.5x"  />
