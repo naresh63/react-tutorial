@@ -1,0 +1,3 @@
+<a href="mailto:{email}?subject={subject}&body={content}"> Send us an email </a>
+<a href="tel:{phone"> call us </a>
+<a href="sms:{phone}?body={content}"> send us a message </a>
