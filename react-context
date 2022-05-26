@@ -1,0 +1,45 @@
+import './App.css';
+import Header from './components/Header';
+import Content from './components/Content';
+import Footer from './components/Footer';
+import {createContext, useState} from 'react';
+export let dataContext=createContext()
+ // context topic
+function App() {
+  let [name,setName]=useState("naresh")
+  // for theme
+  let [theme,setTheme]=useState([
+    {color:"black",bg:"white"},
+    {color:"white",bg:"grey"}
+  ])
+  return (
+    <div className="App">
+      <dataContext.Provider value={{name,setName,theme,setTheme}}>
+      <Header/>
+      <hr/>
+      <Content/>
+      <hr/>
+      <Footer/>
+      </dataContext.Provider>
+    </div>
+  );
+}
+export default App;
+
+
+import React from 'react';
+import {dataContext} from '../App'
+import {useContext} from 'react';
+export default function Header() {
+    let {name,setName}=useContext(dataContext)
+    console.log(name)
+  return(
+     <div>
+         <h1>header component-{name}</h1>
+         <h2>state-{name}</h2>
+         <button onClick={()=>{
+            setName("valvi")
+         }}>click here</button>
+     </div>
+  );
+}
