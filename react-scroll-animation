@@ -1,0 +1,32 @@
+AOS -animation on scroll
+npm i aos
+
+./App.js
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+function App() {
+
+  useEffect(() => {
+    AOS.init({
+      duration : 2000,
+      
+    });
+  }, []);
+
+  return ( 
+  <> 
+     <div className="container" data-aos="fade-up">
+            <h3> fade up  </h3>
+          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry </p>
+     </div>
+     // content coming from right side , to play only once, data-aos-once="true"
+     <div className="container" data-aos="fade-right" data-aos-once="true">
+            <h3> fade right  </h3>
+          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+     </div>     
+  
+  </>
+  )
+  }
+  // reference - https://dev.to/ruppysuppy/create-the-ultimate-user-experience-with-aos-animate-on-scroll-39jp
