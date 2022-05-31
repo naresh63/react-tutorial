@@ -1,1 +1,13 @@
+npm install react-bootstrap bootstrap
+or when legacy error
+npm install react-bootstrap bootstrap --legacy-peer-deps
+inside src folder ,index.js
+src/index.js
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+HOW TO USE INSIDE COMPONENT
+eg.
+./App.js
+import { Button } from 'react-bootstrap';
+
+<Button> save </Button>
