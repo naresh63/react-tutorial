@@ -1,0 +1,45 @@
+npm i react-router-dom
+inside index.js
+./index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+// react-bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.Fragment>
+  <BrowserRouter> 
+    <App />
+    </BrowserRouter>  
+  </React.Fragment>
+);
+
+./App.js
+import {Routes,Route} from 'react-router-dom';
+function App(){
+   return(
+   <div>
+       <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route index element={<Home />} />
+        <Route path="/services" element={<Services/>} />
+        <Route path="/industries" element={<Industries/>} />
+        <Route path="/hireresources" element={<HireResources/>} />
+        <Route path="/blogs" element={<Blogs/>} />
+        <Route path="/company" element={<Company/>} />
+    </Routes> 
+   </div>
+   )
+}
+
+./Header.js
+<ul>
+<li> <NavLink to="/services"> SERVICES </NavLink>  </li>
+<li> <NavLink to="/industries"> INDUSTRIES </NavLink>  </li>
+<li> <NavLink to="/hireresources"> HIRE RESOURCES </NavLink>  </li>
+<li> <NavLink to="/blogs"> BLOGS </NavLink>  </li>
+</ul>
