@@ -1,0 +1,36 @@
+npm i html2canvas
+npm i jspdf
+// steps
+html =>image=>pdf
+eg. ./App.css
+import React,{ useState,useRef } from 'react'
+import html2canvas from "html2canvas";
+import { jsPDF } from "jspdf";
+
+function App(){
+// download as PDF functionality  
+const inputRef = useRef(null);
+const printDocument = () => {
+  html2canvas(inputRef.current)
+  .then((canvas) => {
+    const imgData = canvas.toDataURL("image/png");
+    localStorage.setItem("storageFiles", JSON.stringify(imgData));
+    // jsPdf from jspdf library
+    const pdf = new jsPDF();
+    pdf.addImage(imgData, "JPEG", 0, 0);
+    pdf.save("download.pdf");
+  });
+};
+return(
+<div>
+     <div className="printbtn-wrapper">
+              <button className="printbtn" onClick={()=>printDocument()}>PRINT</button>
+      </div>
+    {/* this div we want to print */}
+        <div className="content content1" id="divToPrint" ref={inputRef} >
+          <img src={customImg} width="70" height="70" />
+        </div>
+        
+</div>
+)
+}
