@@ -77,3 +77,12 @@ let [genradio, setGenradio] = useState("male");
               
               <input type="file" className="form-control" name="adharfront" value={adharfrontfile} onChange={(e)=>setAdharfrontfile(e.target.files[0])} />
             </Col>
+            
+// textarea
+  const [textarea, setTextarea] = useState(
+    "The content of a textarea goes in the value attribute"
+  );
+  
+   <form>
+      <textarea value={textarea} onChange={(e)=>setTextarea(e.target.value)} />
+    </form>
