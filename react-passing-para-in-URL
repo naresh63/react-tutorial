@@ -1,0 +1,31 @@
+.src/App.js
+{/* dynamic route */}
+        <Route path="/menudetail/:title" element={<MenuDetail/>} />
+
+.src/components/Services.js
+<Link to="/menudetail/wordpress-development"> Menu1 </Link>
+<Link to="/menudetail/php-development"> Menu2 </Link>
+
+
+.src/components/MenuDetail.js
+import React from 'react'
+import {useParams} from 'react-router-dom'
+function MenuDetail() {
+  const { title } = useParams();
+  const posts = [
+    { id: 1, title:'wordpress-development', content: 'We extend our hands to unlock the story behind WordPress that have potential to deliver world class solutions that are compatible with your any sort of business requirement. We have experienced WordPress Developers that can boost your digital presence and skyrocket your sales to a certain notch.With our premium WordPress Development services we offer to our customers and handle a diverse range of projects to facilitate intuitive, responsive and reduced downtime solutions for your business.' },
+    { id: 2, title:'php-development', content: 'Our revolutionary PHP developers are experts in empowering businesses with dynamic and scalable PHP development technical solutions that allow businesses to scale up on new success ladders.Our full stack PHP development services with its rich features always ready to fulfill the ultimate demands of our customers. We bring a range of outstanding PHP Development services that elevates your business to new heights' }
+  ]
+  let selectedpost=posts.find((ele)=>{
+    return (ele.title == title ) 
+  })
+  return (
+    <div>
+         <h1> checking</h1>
+         <h1> id-{selectedpost.id} </h1>
+         <h1> title-{selectedpost.title} </h1>
+         <h1> content-{selectedpost.content} </h1>
+    </div>
+  )
+}
+export default MenuDetail
