@@ -1,0 +1,85 @@
+npm i formik-yup
+./LoginForm.js
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import * as Yup from 'yup'
+import React from 'react'
+import {Button,Row} from 'react-bootstrap';
+
+function LoginForm() {
+  return (
+    <div>
+    <Row className='ms-5'> <h4>Login form </h4> </Row>
+    <Formik
+      initialValues={{firstName: '' , lastName: '' , email: '', course:'',gender:'',hobby:''}}
+      validationSchema={Yup.object({
+         firstName:Yup.string()
+                      .max(15,'must be 15 chars or less')
+                      .required('required'),
+         lastName:Yup.string()
+                     .max(15,'must have 15 chars or less')
+                     .required('required'),
+
+         email: Yup.string()
+                   .email('invalid email address') 
+                   .required('required'),
+         course: Yup.string().required("A select option is required"),
+         gender:Yup.string().required("A radio option is required"),
+         hobby:Yup.string().required("A checkbox option is required")                            
+      })}
+      onSubmit={(values,{resetForm})=>{
+        alert(JSON.stringify(values))
+         // to empty all fields after submission 
+        resetForm({values:''})
+      }
+      }
+    >
+      <Form>
+      <div className='m-3'> 
+         <Row className='ms-5'> <label> First Name:</label>  </Row>
+        <Field type="text" name="firstName"  className="ms-5 w-50 form-control"/>
+        <Row className='ms-5 text-danger'> <ErrorMessage name="firstName"  /> </Row>
+       </div>
+
+       <div className='m-3'> 
+         <Row className='ms-5'> <label> last Name:</label>  </Row>
+        <Field type="text" name="lastName"  className="ms-5 w-50 form-control"/>
+        <Row className='ms-5 text-danger'>  <ErrorMessage name="lastName" /> </Row>
+       </div>
+
+       <div className='m-3'> 
+         <Row className='ms-5'> <label> Email Address:</label>  </Row>
+        <Field type="text" name="email"  className="ms-5 w-50 form-control"/>
+        <Row className='ms-5 text-danger'> <ErrorMessage name="email" /> </Row>
+       </div>
+       <div className='m-3'>  
+       <Row className='ms-5'> <label> Select Courses:</label>  </Row>
+        <Field as="select" name="course"  className="ms-5 w-50 form-control"> 
+        <option value="select category" > select category </option>
+         <option value="html" > HTML </option>
+         <option value="css" > CSS </option>
+        </Field>
+        <Row className='ms-5 text-danger'> <ErrorMessage name="course" /> </Row>
+       </div>
+       <div className='m-3'>  
+       <Row className='ms-5'> <label> Select Gender:</label>  </Row>
+        <Field type="radio" name="gender" value="male" className="ms-5 "/> 
+        <Field type="radio" name="gender" value="female" className="ms-5 "/> 
+        <Field type="radio" name="gender" value="other" className="ms-5 "/> 
+        <Row className='ms-5 text-danger'> <ErrorMessage name="gender" /> </Row>
+       </div>
+       <div className='m-3'>
+       <Row className='ms-5'> <label> Select Hobbies:</label>  </Row>
+        <Field type="checkbox" name="hobby" value="travel" className="ms-5 "/> 
+        <Field type="checkbox" name="hobby" value="gaming" className="ms-5 "/> 
+        <Field type="checkbox" name="hobby" value="cricket" className="ms-5 "/> 
+        <Row className='ms-5 text-danger'> <ErrorMessage name="hobby" /> </Row>
+       </div>
+
+       <Button variant='primary' type="submit" className='ms-5'>SUBMIT</Button>
+      </Form>
+    </Formik>
+    </div>
+  )
+}
+export default LoginForm
+
