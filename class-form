@@ -1,0 +1,57 @@
+import React, { PureComponent } from 'react'
+export default class Darkmode extends PureComponent {
+    constructor() {
+        super();
+        this.state = {
+            darkMode: false,
+            username: "",
+            password: "",
+            agreement: false,
+            size: "",
+            selectColor:''
+        }
+    }
+    render() {
+        console.log(this.state)
+        // this.state.darkMode ? "light" : "dark"
+        return (
+            <div className={this.state.darkMode ? 'darkmode' : 'lightmode'}>
+                <p>I was built with a Class component extending React.Component.</p>
+                <div>
+                    <input type="text" placeholder='Enter Username' value={this.state.username} onChange={(e) => this.setState({ username: e.target.value })} />
+                </div> <br />
+                {/* <div>{this.state.username} </div> */}
+                <div>
+                    <input type="text" placeholder='Enter Password' value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} />
+                </div>
+                <div>
+                    <input type="checkbox" checked={this.state.agreement} onChange={(e) => this.setState({ agreement: e.target.checked })} />  agreement
+                </div> <br />
+                <div>
+                    <input type='checkbox' checked={this.state.darkMode} onChange={(e) => this.setState({ darkMode: e.target.checked })} /> Dark Mode
+                </div>
+                <label> select Pizza size: </label>
+                <div>
+                    <input type="radio" name="pizza" value="small" checked={this.state.size === "small"} onChange={(e) => this.setState({ size: e.target.value })} /> Small
+                </div>
+                <div>
+                    <input type="radio" name="pizza" value="medium" checked={this.state.size === "medium"} onChange={(e) => this.setState({ size: e.target.value })} />  Medium
+                </div>
+                <div>
+                    <input type="radio" name="pizza" value="large" checked={this.state.size === "large"} onChange={(e) => this.setState({
+                        size: e.target.value
+                    })} /> Large
+                </div>
+                <label> Select Color : </label>
+                <div>
+                    <select value={this.state.selectColor} onChange={(e)=>this.setState({selectColor: e.target.value})} >
+                        <option value=""> Select Color... </option>
+                        <option value="green"> Green </option>
+                        <option value="Red"> Red </option>
+                        <option value="Blue"> Blue </option>
+                    </select>
+                </div>
+            </div>
+        )
+    }
+}
