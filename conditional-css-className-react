@@ -1,0 +1,25 @@
+ i am class based component
+ <div className={ this.state.darkMode ? 'darkmode': 'lightmode'}>
+ 
+ </div>
+ 
+ .darkmode{
+  background-color:black;
+  color:whitesmoke;
+  border-radius: 5px;
+  width:500px;
+  padding:10px;
+  margin:10px auto;
+}
+.darkmode input{
+  background-color: black;
+}
+
+.lightmode{
+  background-color:white;
+  color:black;
+  border-radius: 5px;
+  width:500px;
+  padding:10px;
+  margin:10px auto;
+}
