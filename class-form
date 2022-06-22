@@ -8,19 +8,27 @@ export default class Darkmode extends PureComponent {
             password: "",
             agreement: false,
             size: "",
-            selectColor:''
+            selectColor:'',
+            checkLang:[]
         }
     }
     render() {
+        const {checkLang}= this.state
+        console.log(checkLang)
         console.log(this.state)
-        // this.state.darkMode ? "light" : "dark"
         return (
             <div className={this.state.darkMode ? 'darkmode' : 'lightmode'}>
+                <label> Select Language : </label> 
+              <div>
+              <input type="checkbox" value="english"
+               onChange={(e) => this.setState({checkLang:[e.target.value,...checkLang]})} /> English
+              <input type="checkbox" value="hindi" 
+               onChange={(e) => this.setState({checkLang:[e.target.value,...checkLang]} )} /> Hindi
+              </div>
                 <p>I was built with a Class component extending React.Component.</p>
                 <div>
                     <input type="text" placeholder='Enter Username' value={this.state.username} onChange={(e) => this.setState({ username: e.target.value })} />
                 </div> <br />
-                {/* <div>{this.state.username} </div> */}
                 <div>
                     <input type="text" placeholder='Enter Password' value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} />
                 </div>
