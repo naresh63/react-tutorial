@@ -1,0 +1,35 @@
+// class component with pureComponent
+import React, { PureComponent } from 'react'
+export default class Car extends PureComponent {
+    constructor(props){
+        super(props);
+        this.state={
+            brand:'ford',
+            model:'mustang',
+            color:'red',
+            year:'1964',
+            users:[]
+        }
+    }
+    changeColor=()=>{
+        this.setState(
+            { color: "green"}
+        )
+    }
+   
+  render() {
+    console.log('car class comp render....')
+    return (
+      <div>
+       <h1> Car class based component</h1>
+       {/* <h4> this car model is (with props)- {this.props.model}</h4> */}
+       <h3> brand name is -{this.state.brand}</h3>
+       <h3> model name is -{this.state.model}</h3>
+       <h3> car color is  - {this.state.color}</h3>
+       <h3> car manufactured year is - {this.state.year}</h3>
+       <button onClick={this.changeColor}> change color</button>
+       <hr/>
+      </div>
+    )
+  }
+}
