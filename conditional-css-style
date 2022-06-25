@@ -1,0 +1,25 @@
+import React from 'react'
+import { useState } from 'react'
+function CondiCss() {
+    const [toggle,setToggle]=useState(false)
+// change color
+ function changeColor(){
+    if(toggle){
+        setToggle(false)
+    }else{
+        setToggle(true)
+    }
+ }
+  return (
+    <div>
+    <h2> conditional css with style</h2>
+     <button
+      onClick={()=>changeColor()}
+      style={{
+        background : toggle ? 'green':'red'
+      }}
+     > change color  </button>
+    </div>
+  )
+}
+export default CondiCss
