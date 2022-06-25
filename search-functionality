@@ -1,0 +1,95 @@
+import React, { useState } from 'react'
+import Data from './mock-data.json' // static JASON DATA created in ./mock-data.json
+function SearchComp() {
+    const [searchInp,setSearchInp]=useState("");
+  return (
+    <div className='search-wrapper'>
+    <h1> Search Comp </h1>
+    <div> <input type="text" value={searchInp} placeholder="Search here" onChange={(e)=>setSearchInp(e.target.value)}/> 
+    {/* <button> Search</button> */}
+      </div>
+    {        
+        Data.filter((post)=>{
+        if(searchInp === ""){
+            // if input is empty
+            return post;
+        }else if(post.title.toLowerCase().includes(searchInp.toLocaleLowerCase())){
+            // returned filtered array
+            return post;
+        }
+    }).map((ele)=>{
+            return(
+                <div className='post' key={ele.id}>
+                    <p>{ele.title} </p>
+                    <p> {ele.author}</p>
+                </div>
+            )
+        })
+    }
+    </div>
+  )
+}
+export default SearchComp
+./mock-data.json
+[
+    {
+        "id":"1",
+        "title":"sunt aut facere repellat provident occaecati excepturi",
+        "author":"json bourne",
+        "date":"12/10/2010"
+    },
+    {
+        "id":"2",
+        "title":"est rerum tempore vitaesequi sint",
+        "author":"tempore",
+        "date":"13/10/2011" 
+    },
+    {
+        "id":"3",
+        "title":"dolorum ut in voluptas mollitia et saepe quo animi",
+        "author":"animi",
+        "date":"14/10/2012" 
+    },
+    {
+        "id":"4",
+        "title":"fuga et accusamus dolorum perferendis illo voluptas",
+        "author":"illo",
+        "date":"15/10/2013" 
+    },
+    {
+        "id":"5",
+        "title":"reprehenderit quos placeatvelit minima officia",
+        "author":"quos",
+        "date":"16/10/2014" 
+    },
+    {
+        "id":"6",
+        "title":"sint suscipit perspiciatis velit dolorum rerum ipsa",
+        "author":"sint",
+        "date":"17/10/2015" 
+    },
+    {
+        "id":"7",
+        "title":"eos voluptas et aut odit natus earum\naspernatur fuga",
+        "author":"natus",
+        "date":"18/10/2016" 
+    },
+    {
+        "id":"8",
+        "title":"luptate et itaque vero tempora molestiae",
+        "author":"vero",
+        "date":"19/10/2017" 
+    },
+    {
+        "id":"9",
+        "title":"qui consequuntur ducimus possimus quisquam amet similique",
+        "author":" ducimus",
+        "date":"20/10/2018" 
+    },
+    {
+        "id":"10",
+        "title":"pellat aliquid praesentium dolorem quosed totam",
+        "author":"totam",
+        "date":"21/10/2019" 
+    }
+]
