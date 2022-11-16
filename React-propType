@@ -1,0 +1,38 @@
+npm i prop-types --save
+import React from 'react'
+import PropTypes from 'prop-types'
+
+
+function Card(props) {
+    const {title,body,age,obj,arr,calling,isPresent,msg} = props;
+  return (
+    <div>
+       <h1> Title : {title}</h1>
+       <p> body : {body} </p>
+       <p> age : {age} </p>
+       <p> obj : {obj.name} </p>
+       <p> arr : {arr} </p>
+
+       <p> isPresent : {String(isPresent)} </p>
+       <button onClick={calling}> calling</button>
+
+    </div>
+  )
+}
+
+Card.propTypes = {
+    title: PropTypes.string,
+    body: PropTypes.string,
+    age: PropTypes.number,
+    obj: PropTypes.object,
+    arr: PropTypes.array,
+    calling: PropTypes.func,
+    isPresent: PropTypes.bool
+
+}
+ Card.defaultProps ={
+    title : "lorem lorem",
+    body: " body body"
+ }
+
+export default Card
