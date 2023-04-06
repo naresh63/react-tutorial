@@ -1,0 +1,105 @@
+import { Button, TextField } from "@mui/material";
+import { Box } from "@mui/system";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FormikProvider, useFormik, Form } from "formik";
+import * as yup from "yup";
+
+function Login() {
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+  //   navigate("/home");
+  // };
+
+  const handleFormSubmit = (values, { resetForm }) => {
+    if (values !== "undefined") {
+      console.log("///values;", values);
+      resetForm({ values: "" });
+    }
+  };
+
+  const loginSchema = yup.object().shape({
+    username: yup.string().required(),
+    password: yup
+      .string()
+      .min(2, "Minimum character is 2")
+      .max(50, "Maximum character is 50.")
+      .required(),
+  });
+
+  const loginFormik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+    validationSchema: loginSchema,
+    onSubmit: handleFormSubmit,
+  });
+
+  const { touched, handleSubmit, values, errors, setFieldValue, handleChange } =
+    loginFormik;
+
+  return (
+    <div>
+      <Box
+        sx={{
+          margin: "0 auto",
+          border: "1px solid lightgrey",
+          width: "300px",
+          minHeight: "250px",
+          borderRadius: "20px",
+          padding: "20px",
+          boxShadow:
+            "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+        }}
+      >
+        <h3 style={{ textAlign: "center" }}> Login Page</h3>
+        <FormikProvider value={loginFormik}>
+          <Form onSubmit={handleSubmit}>
+            <TextField
+              style={{ width: "300px", margin: "10px auto" }}
+              type="text"
+              label="Username"
+              size="small"
+              value={values.username}
+              name="username"
+              onChange={handleChange("username")}
+            />
+            {errors.username && touched.username && (
+              <div className="text-danger">{errors.username}</div>
+            )}
+
+            <TextField
+              style={{ width: "300px", margin: "10px auto" }}
+              type="password"
+              label="Password"
+              size="small"
+              value={values.password}
+              name="password"
+              onChange={handleChange("password")}
+            />
+            {errors.password && touched.password && (
+              <div className="text-danger">{errors.password}</div>
+            )}
+
+            <Button
+              variant="contained"
+              type="submit"
+              color="primary"
+              sx={{ width: "300px", margin: "10px auto" }}
+              // onClick={handleLogin}
+            >
+              LOGIN
+            </Button>
+          </Form>
+        </FormikProvider>
+      </Box>
+    </div>
+  );
+}
+export default Login;
